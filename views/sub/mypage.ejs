@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>마이페이자</title>
+</head>
+<style>
+    .main {
+        width: 100%;
+        height: 100%;
+    }
+
+    .mimg {
+        width: 300px;
+        height: 305px;
+    }
+</style>
+
+<body>
+
+    <div class="main">
+        <h1>내가 등록한 장난감</h1>
+        <%for(var i=0;i<data.length; i++) { %>
+        <div style="float: left; width: 300px; margin: 6%;">
+            <div><a href="/detail/<%=data[i].toyId%>"><img src="/<%=data[i].toyPic%>" width="400" height="430"
+                        class="toyPic" alt="상품이미지" /></a></div>
+            <div><a style="text-decoration: none; color: black;" href="/detail/<%=data[i].toyId%>">
+                    <h2><%=data[i].toyName%></h2>
+                </a></div>
+            <div>
+                <h2>현재입찰코인 : <%=data[i].currentCoin%></h2>
+            </div>
+
+            <div>
+                <h2>현재 입찰한 친구 수 <%=data[i].bidNum%>명</h2>
+            </div>
+            <div>
+                <a href="/delete/<%=data[i].toyId%>" style="color: crimson;">삭제</a>
+                <a href="/modify/<%=data[i].toyId%>" style="color: darkslateblue;">수정</a>
+            </div>
+        </div>
+        <% } %>
+    </div>
+
+</body>
+
+</html>

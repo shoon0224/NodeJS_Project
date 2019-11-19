@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>코인충전</title>
+</head>
+<script type="text/javascript">
+function parents(){
+    if(document.getElementById("show").style.display=="block"){
+        document.getElementById("show").style.display="none";
+    }else{
+        document.getElementById("show").style.display="block";
+    }
+}
+</script>
+<body>   
+      <form action="/coin" method="POST">
+        <h1>우리아이코인충전</h1>
+        <hr/>
+        <label>현재코인 <%=sess.info.coin%></label><br>         
+        <label>충전할코인</label> 
+        <input type="text" id="coin" name="coin">
+        <input type="button" onclick="parents();" value="충전"/>
+        <div id="show" style="display: none;">
+            <input type="text" id="parentsPw" placeholder="부모님비밀번호입력" name="parentsPw">
+            <input type="submit"value="확인"/><br>
+        </div>
+      </form>
+</body>
+</html>

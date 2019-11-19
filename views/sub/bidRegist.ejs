@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>장난감등록</title>
+</head>
+
+<body>
+      <form action="/bidRegist" method="POST" enctype="multipart/form-data">
+      <h1>경매등록</h1>
+      <hr/>
+      <br>
+      <input type='file' name="photo"/>
+      <br>
+      <input type="text" id="toyName" name="toyName" placeholder="장난감 이름을 입력하세요">
+      <br>
+      <input type="text" id="toyRprice" name="toyRprice" placeholder="장난감 가격을 입력하세요">
+      <br>
+      <input type="text" id="saleReason" name="saleReason" placeholder="판매 사유를 입력하세요">
+      <br>
+      <input type="text" id="toyExp" name="toyExp" placeholder="장난감 설명을 입력하세요">
+      <br>
+      <input type="text" id="startCoin" name="startCoin" placeholder="경매를 시작할 코인을 정해주세요">
+      <br>
+      <input type="datetime-local" id="endTime" name="endTime">
+      <br>
+      <input type="submit"  value="등록하기">
+    </form>
+</body>
+</html>
