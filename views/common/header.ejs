@@ -33,6 +33,7 @@
         text-align: right;
         background-color: #FFEE30;
     }
+    
 </style>
 
 <body>
@@ -45,7 +46,7 @@
         <a href="#"><%=sess.info.name%>친구</a>&nbsp;|&nbsp;
         <a href="/users/coin">코인충전소</a>&nbsp;|&nbsp;
         <a href="/users/mypage">마이페이지</a>&nbsp;|&nbsp;
-        <form action="/users/logout" method="post">
+        <form class="logout" action="/users/logout" method="post">
             <button type="submit">로그아웃</button>
         </form>
         <% } else { %>

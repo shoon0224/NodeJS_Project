@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var dbConfig = {
   host: 'localhost',
   user: 'root',
-  password: '1234',
+  password: 'shoon0224',
   port: 3306,
   database: 'atoy',
   use_prepared_statements: 'N'

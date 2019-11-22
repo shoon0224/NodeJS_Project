@@ -8,13 +8,29 @@ var time = newDate.toFormat('YYYY-MM-DD HH24:MI:SS');
 var dbConfig = {
   host: 'localhost',
   user: 'root',
-  password: '1234',
+  password: 'shoon0224',
   port: 3306,
   database: 'atoy',
   use_prepared_statements: 'N'
 };
 var pool = mysql.createPool(dbConfig);
 
+router.get('/bidChild/:toyId',function(req,res,next){
+  var sess=req.session;
+  var toyId = req.params.toyId;
+  pool.getConnection(function(err,conn){
+    if(err){
+      throw err;
+    }
+    var sql = "select bid.* from bid where toy_toyId = ? order by bidCoin DESC ";
+    conn.query(sql,[toyId],(err,row)=>{
+      if(err){
+        throw err;
+      }
+      res.render('index', { page: './sub/bidChild.ejs', data: row, sess: sess });
+    })
+  })
+})
 router.post('/bid/:toyId', function(req, res, next){
     var sess = req.session;
     var toyId = req.params.toyId;
@@ -104,4 +120,34 @@ router.post('/bid/:toyId', function(req, res, next){
       });
     });
   }); //입찰하기
+
+  function myTimer(){
+    var d = new Date();
+    var t = d.toFormat('YYYY-MM-DD HH24:MI:SS');
+    console.log(t);
+    pool.getConnection((err,conn)=>{
+      if(err){
+        throw err;
+      }
+      var sql="select toyId from toy where endTime < '2019-11-21 21:14' and bidstate != '입찰완료'";
+      conn.query(sql,[t],(err,toyId)=>{
+        if(err){
+          throw err;
+        }
+        if(toyId[0]){
+          for(var i = 0; i<toyId.length; i++){
+            var sql_update = "update toy set bidState = '입찰완료', winner = (select user_id from bid where toy_toyID = ? ORDER BY bidCoin ASC LIMIT 1) where endTime < ?";
+            conn.release();
+            conn.query(sql_update, [toyId[i], t], (err, update) => {
+              if(err){
+                throw err;
+              }
+            });
+          }
+        }
+      });
+    });
+  }//상태, 낙찰자 업데이트
+  
+  var myVar=setInterval(function(){myTimer();},100000); //1초마다 실행
 module.exports = router;

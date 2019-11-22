@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var dbConfig = {
   host: 'localhost',
   user: 'root',
-  password: '1234',
+  password: 'shoon0224',
   port: 3306,
   database: 'atoy',
   use_prepared_statements: 'N'
@@ -18,7 +18,7 @@ router.get('/', function (req, res, next) {
     if(err){
       throw err;
     }
-    var sql="select toyId,toyPic,toyName,currentCoin,date_format(endTime,'%y-%m-%d %T') AS endTime,bidNum from toy"
+    var sql="select toyId,toyPic,toyName,currentCoin,date_format(endTime,'%y-%m-%d %T') AS endTime,bidNum,bidState from toy"
     conn.query(sql,(err,row)=>{
       conn.release();
       if(err){
@@ -36,7 +36,7 @@ router.get('/deadLine', function (req, res, next) {
     if(err){
       throw err;
     }
-    var sql="select toyId,toyPic,toyName,currentCoin,date_format(endTime,'%y-%m-%d %T') AS endTime,bidNum from toy order by endTime ASC"
+    var sql="select toyId,toyPic,toyName,currentCoin,date_format(endTime,'%y-%m-%d %T') AS endTime,bidNum,bidState from toy order by endTime ASC"
     conn.query(sql,(err,row)=>{
       conn.release();
       if(err){
@@ -54,7 +54,7 @@ router.get('/popular', function (req, res, next) {
     if(err){
       throw err;
     }
-    var sql="select toyId,toyPic,toyName,currentCoin,date_format(endTime,'%y-%m-%d %T') AS endTime,bidNum from toy order by bidNum DESC"
+    var sql="select toyId,toyPic,toyName,currentCoin,date_format(endTime,'%y-%m-%d %T') AS endTime,bidNum,bidState from toy order by bidNum DESC"
     conn.query(sql,(err,row)=>{
       conn.release();
       if(err){
@@ -73,7 +73,7 @@ router.post('/inquire', function (req, res, next) {
     if (err) {
       throw err;
     } ''
-    var sql = "select  toyId,toyPic,toyName,currentCoin,date_format(endTime,'%y-%m-%d %T') AS endTime,bidNum from toy where toyName like concat('%', ?, '%') "
+    var sql = "select  toyId,toyPic,toyName,currentCoin,date_format(endTime,'%y-%m-%d %T') AS endTime,bidNum,bidState from toy where toyName like concat('%', ?, '%') "
     conn.query(sql, [req.body.inquire], function (err, row) {
       if (err) {
         throw err;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<style>
+    body h1,
+    form {
+        text-align: center;
+
+    }
+
+    table {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        border-top: 1px solid #444444;
+        border-collapse: collapse;
+    }
+    th,
+    td {
+        border-bottom: 1px solid #444444;
+        padding: 10px;
+        text-align: center;
+    }
+
+    thead tr {
+        background-color: #FFEE30;
+        color: #030000;
+    }
+</style>
+
+<body>
+  <h1>입찰자명단</h1>
+  <table>
+    <thead>
+        <tr>
+            <th>친구</th>
+            <th>금액</th>
+          </tr>
+    </thead>
+    <tbody>
+      <%for(var i=0;i<data.length; i++) { %>
+      <tr>
+        <td><%=data[i].user_id%></td>
+        <td><%=data[i].bidCoin%></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</body>
+</html>

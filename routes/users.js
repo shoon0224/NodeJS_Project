@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var dbConfig = {
   host: 'localhost',
   user: 'root',
-  password: '1234',
+  password: 'shoon0224',
   port: 3306,
   database: 'atoy',
   use_prepared_statements: 'N'
@@ -96,15 +96,26 @@ router.post('/coin', function (req, res, next) {
     var sql = "update user set coin = ? where id = ? and parentsPw = ?";
     var coin = parseInt(req.body.coin) + parseInt(sess.info.coin);
     conn.query(sql, [coin, sess.info.id, req.body.parentsPw], (err, row) => {
-      conn.release();
       if (err) {
         throw err;
       }
-      else {
-        res.send("<script>alert('충전완료.');history.back();</script>");
+      if(row){
+        var sql = "select * From user where id=?";
+        conn.query(sql, [sess.info.id], (err, row) => {
+          if (err) {
+            res.send(300, {
+              result: 0,
+              msg: 'DB Error'
+            });
+          }
+          if(row){
+            sess.info = row[0];
+            res.send("<script>alert('충전완료.');history.back();</script>");
+          }
       }
-    });
+    )};
   });
+})
 });//코인충전 요청
 
 router.get('/mypage',function(req,res,next){

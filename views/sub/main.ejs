@@ -39,6 +39,7 @@
         <a href="/deadLine">마감입박순</a>
 
         <%for(var i=0;i<data.length; i++) { %>
+            <% if(data[i].bidState=="입찰중"){%>
         <div style="float: left; width: 300px; margin: 6%;">
             <div><a href="/toy/detail/<%=data[i].toyId%>"><img src="/<%=data[i].toyPic%>" width="400" height="430"
                         class="toyPic" alt="상품이미지" /></a></div>
@@ -55,6 +56,7 @@
                 <h2>현재<%=data[i].bidNum%>명의 친구가 입찰했어요! </h2>
             </div>
         </div>
+        <% } %>
         <% } %>
     </div>
 

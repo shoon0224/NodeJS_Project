@@ -12,8 +12,14 @@ function parents(){
     }
 }
 </script>
+<style>
+    .coin{
+        width: 100%;
+        float: left;
+    }
+</style>
 <body>   
-      <form action="/users/coin" method="POST">
+      <form class="coin" action="/users/coin" method="POST">
         <h1>우리아이코인충전</h1>
         <hr/>
         <label>현재코인 <%=sess.info.coin%></label><br>         
