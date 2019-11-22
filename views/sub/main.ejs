@@ -15,27 +15,34 @@
         width: 300px;
         height: 305px;
     }
+
+    .search {
+        width: 100%;
+        background-color: #FFEE30;
+        padding-bottom: 10px;
+        float: left;
+    }
 </style>
 
 <body>
 
     <div class="main">
-        <div class="">
+        <div class="search">
             <form style="text-align:center;" action="/inquire" method="POST">
                 <input style="width:300px; height:30px; border-radius: 5px;" type="search" name="inquire" size="30"
                     maxlength="35">
                 <button style="height: 30px; border-radius: 10px;" type="submit" id="search">검색</button>
             </form>
         </div>
-        <a href="/bidRegist">경매등록</a>
+        <a href="/toy/bidRegist">경매등록</a>
         <a href="/popular">인기순</a>
         <a href="/deadLine">마감입박순</a>
 
         <%for(var i=0;i<data.length; i++) { %>
         <div style="float: left; width: 300px; margin: 6%;">
-            <div><a href="/detail/<%=data[i].toyId%>"><img src="/<%=data[i].toyPic%>" width="400" height="430"
+            <div><a href="/toy/detail/<%=data[i].toyId%>"><img src="/<%=data[i].toyPic%>" width="400" height="430"
                         class="toyPic" alt="상품이미지" /></a></div>
-            <div><a style="text-decoration: none; color: black;" href="/detail/<%=data[i].toyId%>">
+            <div><a style="text-decoration: none; color: black;" href="/toy/detail/<%=data[i].toyId%>">
                     <h2><%=data[i].toyName%></h2>
                 </a></div>
             <div>

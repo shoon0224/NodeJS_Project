@@ -3,45 +3,57 @@
 
 <head>
     <meta charset="UTF-8">
-  
+
 </head>
 <style>
-    html{
+    html {
         width: 100%;
         min-height: 1080px;
     }
-    body{
+
+    body {
         width: 100%;
-        min-height:1080px ;
+        min-height: 1080px;
         margin: 0;
         padding: 0;
     }
+
     /* 위에 소스 돈 터치 */
 
-    .a1 { text-decoration: none; color: black; font-weight: bold; }
+    a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+
     .header {
         width: 100%;
-        height:100px;
+        height: 100px;
         float: left;
         text-align: right;
         background-color: #FFEE30;
     }
 </style>
+
 <body>
     <div class="header">
-        <a class="a1" href="/">장난감경매</a>&nbsp;|&nbsp;
+        <div>
+            <h1></h1>
+        </div>
+        <a href="/">장난감경매</a>&nbsp;|&nbsp;
         <%if(sess.info) {%>
-        <a class="a1" href="#"><%=sess.info.name%>친구</a>&nbsp;|&nbsp;
-        <a  class="a1" href="/coin">코인충전소</a>&nbsp;|&nbsp;
-        <a class="a1" href="/mypage">마이페이지</a>&nbsp;|&nbsp;
-        <form action="/logout" method="post">
-            <button type="submit" >로그아웃</button>
+        <a href="#"><%=sess.info.name%>친구</a>&nbsp;|&nbsp;
+        <a href="/users/coin">코인충전소</a>&nbsp;|&nbsp;
+        <a href="/users/mypage">마이페이지</a>&nbsp;|&nbsp;
+        <form action="/users/logout" method="post">
+            <button type="submit">로그아웃</button>
         </form>
         <% } else { %>
-        <a class="a1" href="/login">로그인</a>
+        <a href="/users/login">로그인</a>
         &nbsp;|&nbsp;
-        <a class="a1" href="/join">회원가입</a>
+        <a href="/users/join">회원가입</a>
         <% } %>
     </div>
 </body>
+
 </html>

@@ -3,13 +3,15 @@
 <head>
    <title>장난감수정</title>
 </head>
-
+<script>
+   document.getElementById('endTime').value = data[0].endTime.toISOString().slice(0,-1);
+</script>
 <body>
-      <form action="/bidRegist" method="POST" enctype="multipart/form-data">
+      <%for(var i=0;i<data.length; i++) { %>
+      <form action="/toy/modify/<%=data[i].toyId%>" method="POST" enctype="multipart/form-data">
       <h1>경매수정</h1>
       <hr/>
       <br>
-      <%for(var i=0;i<data.length; i++) { %>
       <input type='file' name="photo" value="<%=data[i].toyPic%>" />
       <br>
       <input type="text" id="toyName" name="toyName" value="<%=data[i].toyName%>">
@@ -22,10 +24,8 @@
       <br>
       <input type="text" id="startCoin" name="startCoin"value="<%=data[i].startCoin%>">
       <br>
-      <input type="datetime-local" id="endTime" name="endTime" value="<%=data[i].endTime%>">
-      <br>
       <input type="submit"  value="수정하기">
-      <% } %>
     </form>
+    <% } %>
 </body>
 </html>
