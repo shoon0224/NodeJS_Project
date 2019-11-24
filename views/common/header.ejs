@@ -9,6 +9,7 @@
     html {
         width: 100%;
         min-height: 1080px;
+        background-color: #DAF8FF;
     }
 
     body {
@@ -18,42 +19,111 @@
         padding: 0;
     }
 
-    /* 위에 소스 돈 터치 */
-
     a {
         text-decoration: none;
         color: black;
         font-weight: bold;
     }
 
+    /* 위에 소스 돈 터치 */
+
+
+
     .header {
         width: 100%;
         height: 100px;
         float: left;
-        text-align: right;
         background-color: #FFEE30;
     }
-    
+
+    .a1 {
+        float: left;
+        padding-right: 10px;
+        font-weight: bold;
+    }
+
+
+    .blank {
+        width: 33%;
+        float: left;
+        color: #FFEE30;
+    }
+
+    .logo {
+        width: 33%;
+        text-align: center;
+        margin: auto;
+        float: left;
+        padding-top: 10px;
+    }
+
+    .list {
+        width: 33%;
+        float: left;
+        padding-top: 10px;
+        
+    }
+
+    .logout {
+        float: left;
+        
+    }
+
+    .logoutB {
+        background-color: #FFE616;
+    }
+
+
+
+    @-webkit-keyframes zoom {
+        50% {
+            -webkit-transform: scale(2.05);
+        }
+    }
+
+    @keyframes zoom {
+        50% {
+            transform: scale(2.05);
+        }
+    }
+
+    .logoitem {
+        list-style: none;
+        display: inline-block;
+        transition: .3s;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        width: 150px;
+        height: 75px;
+
+    }
+
+    .logoitem:hover {
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+    }
 </style>
 
 <body>
     <div class="header">
-        <div>
-            <h1></h1>
+        <div class="blank"> .</div>
+        <div class="logo">
+            <a href="/"><img class="logoitem" src="/images/atoylogo1.png" alt="로고"></a>
         </div>
-        <a href="/">장난감경매</a>&nbsp;|&nbsp;
-        <%if(sess.info) {%>
-        <a href="#"><%=sess.info.name%>친구</a>&nbsp;|&nbsp;
-        <a href="/users/coin">코인충전소</a>&nbsp;|&nbsp;
-        <a href="/users/mypage">마이페이지</a>&nbsp;|&nbsp;
-        <form class="logout" action="/users/logout" method="post">
-            <button type="submit">로그아웃</button>
-        </form>
-        <% } else { %>
-        <a href="/users/login">로그인</a>
-        &nbsp;|&nbsp;
-        <a href="/users/join">회원가입</a>
-        <% } %>
+        <div class="list">
+            <a style="color: #005DAB;" class="a1" href="/">장난감경매</a>
+            <%if(sess.info) {%>
+            <a style="color: #F78F1E;" class="a1" href="#"><%=sess.info.name%>친구</a>
+            <a style="color: #EF4035;" class="a1" href="/users/coin">코인충전소</a>
+            <a style="color: #47AA42;" class="a1" href="/users/mypage">마이페이지</a>
+            <form class="logout" action="/users/logout" method="post">
+                <button class="logoutB" type="submit">로그아웃</button>
+            </form>
+            <% } else { %>
+            <a style="color: #F78F1E;" class="a1" href="/users/login">로그인</a>
+            <a style="color: #EF4035;" class="a1" href="/users/join">회원가입</a>
+            <% } %>
+        </div>
     </div>
 </body>
 
