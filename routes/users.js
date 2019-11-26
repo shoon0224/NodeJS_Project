@@ -99,21 +99,23 @@ router.post('/coin', function (req, res, next) {
       if (err) {
         throw err;
       }
-      if(row){
+      if(row.affectedRows==1){
+        console.log(row)
         var sql = "select * From user where id=?";
         conn.query(sql, [sess.info.id], (err, row) => {
           if (err) {
-            res.send(300, {
-              result: 0,
-              msg: 'DB Error'
-            });
+            throw err;
           }
           if(row){
             sess.info = row[0];
             res.send("<script>alert('충전완료.');history.back();</script>");
           }
+        })
       }
-    )};
+    else{
+      res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+      res.write("<script>alert('비밀번호가 틀렸습니다.');history.back();</script>")
+    }
   });
 })
 });//코인충전 요청

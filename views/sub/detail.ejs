@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <title>장난감 상세보기</title>
 </head>
+<style>
+    .detail{
+        float: left;
+    }
+</style>
 <body>
     <%for(var i=0;i<data.length; i++) { %>
-    <form action="/bid/<%= data[i].toyId %>" method="POST" style="width: 100%; height: 1000px;">
+    <form class="detail" action="/bid/<%= data[i].toyId %>" method="POST" style="width: 100%; height: 1000px;">
         <div style="margin: 10%;">
             <h2 style="width: 300px;"><%=data[i].toyName%></h2>
             <hr />

@@ -35,8 +35,8 @@ router.post('/bidRegist', upload.single('photo'), function (req, res, next) {
         if (err) {
             throw err;
         }
-        var sql = "insert into toy values (null,?,?,?,?,?,?,0,?,0,?,'입찰중',null)";
-        conn.query(sql, [sess.info.id, req.body.toyName, req.body.toyRprice, req.body.saleReason, req.body.toyExp, req.body.startCoin, imgurl, req.body.endTime], function (err, row) {
+        var sql = "insert into toy values (null,?,?,?,?,?,0,?,0,?,'입찰중',null)";
+        conn.query(sql, [sess.info.id, req.body.toyName, req.body.toyRprice, req.body.saleReason, req.body.toyExp, imgurl, req.body.endTime], function (err, row) {
             conn.release();
             if (err) {
                 throw err;
@@ -80,9 +80,9 @@ router.post('/modify/:toyId', upload.single('photo'), function (req, res, next) 
         if (req.file != null) {
             console.log("img");
             var imgurl = 'images/' + req.file.originalname;
-            var sql = "update toy set toyName=?, toyRprice=?, saleReason=?, toyExp=?, startCoin=?, toyPic=? where toyId=?";
+            var sql = "update toy set toyName=?, toyRprice=?, saleReason=?, toyExp=?, toyPic=? where toyId=?";
             var toyRprice = parseInt(req.body.toyRprice)
-            conn.query(sql, [req.body.toyName, toyRprice, req.body.saleReason, req.body.toyExp, req.body.startCoin, imgurl, toyId], function (err, result) {
+            conn.query(sql, [req.body.toyName, toyRprice, req.body.saleReason, req.body.toyExp,imgurl, toyId], function (err, result) {
                 conn.release();
                 if (err) {
                     throw err;
@@ -99,9 +99,9 @@ router.post('/modify/:toyId', upload.single('photo'), function (req, res, next) 
         }
         else {
             console.log("img");
-            var sql = "update toy set toyName=?, toyRprice=?, saleReason=?, toyExp=?, startCoin=? where toyId=?";
+            var sql = "update toy set toyName=?, toyRprice=?, saleReason=?, toyExp=? where toyId=?";
             var toyRprice = parseInt(req.body.toyRprice)
-            conn.query(sql, [req.body.toyName, toyRprice, req.body.saleReason, req.body.toyExp, req.body.startCoin, toyId], function (err, result) {
+            conn.query(sql, [req.body.toyName, toyRprice, req.body.saleReason, req.body.toyExp, toyId], function (err, result) {
                 conn.release();
                 if (err) {
                     throw err;

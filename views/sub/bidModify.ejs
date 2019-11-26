@@ -6,9 +6,14 @@
 <script>
    document.getElementById('endTime').value = data[0].endTime.toISOString().slice(0,-1);
 </script>
+<style>
+   .modify{
+      float: left;
+   }
+</style>
 <body>
       <%for(var i=0;i<data.length; i++) { %>
-      <form action="/toy/modify/<%=data[i].toyId%>" method="POST" enctype="multipart/form-data">
+      <form class="modify" action="/toy/modify/<%=data[i].toyId%>" method="POST" enctype="multipart/form-data">
       <h1>경매수정</h1>
       <hr/>
       <br>
@@ -21,8 +26,6 @@
       <input type="text" id="saleReason" name="saleReason" value="<%=data[i].saleReason%>">
       <br>
       <input type="text" id="toyExp" name="toyExp" value="<%=data[i].toyExp%>">
-      <br>
-      <input type="text" id="startCoin" name="startCoin"value="<%=data[i].startCoin%>">
       <br>
       <input type="submit"  value="수정하기">
     </form>

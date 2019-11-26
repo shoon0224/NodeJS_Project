@@ -9,7 +9,7 @@
     html {
         width: 100%;
         min-height: 1080px;
-        background-color: #DAF8FF;
+        background-color: white;
     }
 
     body {
@@ -70,7 +70,8 @@
     }
 
     .logoutB {
-        background-color: #FFE616;
+        background-color: #FFEE30;
+        color: #47AA42 ;
     }
 
 
@@ -111,11 +112,10 @@
             <a href="/"><img class="logoitem" src="/images/atoylogo1.png" alt="로고"></a>
         </div>
         <div class="list">
-            <a style="color: #005DAB;" class="a1" href="/">장난감경매</a>
             <%if(sess.info) {%>
-            <a style="color: #F78F1E;" class="a1" href="#"><%=sess.info.name%>친구</a>
-            <a style="color: #EF4035;" class="a1" href="/users/coin">코인충전소</a>
-            <a style="color: #47AA42;" class="a1" href="/users/mypage">마이페이지</a>
+            <a style="color: #005DAB;" class="a1" href="#"><%=sess.info.name%>친구</a>
+            <a style="color: #F78F1E;" class="a1" href="/users/coin">코인충전소</a>
+            <a style="color: #EF4035;" class="a1" href="/users/mypage">마이페이지</a>
             <form class="logout" action="/users/logout" method="post">
                 <button class="logoutB" type="submit">로그아웃</button>
             </form>
