@@ -4,6 +4,7 @@
 <head>
     <title>메인화면</title>
 </head>
+
 <style>
     .main {
         width: 100%;
@@ -11,23 +12,18 @@
         float: left;
     }
 
-    .mimg {
-        width: 300px;
-        height: 305px;
-    }
-
     .search {
         width: 100%;
-        background-color: #FFEE30;
+        background-color: #A6D5FE;
         padding-bottom: 10px;
         float: left;
-        
+
 
     }
 
     .nav {
         width: 100%;
-        background-color: #FFEE30;
+        background-color:  white;
         text-align: center;
         float: left;
 
@@ -83,16 +79,118 @@
         color: white;
     }
 
+
+
     .toies {
         float: left;
         width: 33%;
-        text-align: center;
         margin-top: 5%;
     }
 
-    .toyPic {
-        width: 50%;
-        height: 50%;
+
+
+    @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+
+    figure.snip1283 {
+        font-family: 'Raleway', Arial, sans-serif;
+        /*글꼴 */
+        color: #fff;
+        /*글자색 */
+        position: relative;
+        overflow: hidden;
+        margin: 10px;
+        min-width: 500px;
+        max-width: 500px;
+        max-height: 500px;
+        width: 100%;
+        color: #166fa3;
+        text-align: left;
+        background-color: #A1C5E8;
+        font-size: 50px;
+        -webkit-perspective: 50em;
+        perspective: 50em;
+        
+    }
+
+    figure.snip1283 * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+
+    figure.snip1283 img {
+        opacity: 1;
+        width: 100%;
+        -webkit-transform-origin: 50% 0%;
+        -ms-transform-origin: 50% 0%;
+        transform-origin: 50% 0%;
+
+    }
+
+    figure.snip1283 figcaption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        -webkit-transform: rotateX(90deg);
+        transform: rotateX(90deg);
+        -webkit-transform-origin: 50% 100%;
+        -ms-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        z-index: 1;
+        opacity: 0;
+        padding: 20px 30px;
+    }
+
+    figure.snip1283 h3,
+    figure.snip1283 p {
+        line-height: 1.5em;
+    }
+
+    figure.snip1283 h3 {
+        margin: 0;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    figure.snip1283 p {
+        font-size: 2rem;
+        font-weight: 500;
+        margin: 0 0 15px;
+    }
+
+    figure.snip1283 .read-more {
+        border: 2px solid #ffffff;
+        padding: 0.5em 1em;
+        font-size: 0.8em;
+        text-decoration: none;
+        color: #ffffff;
+        display: inline-block;
+        margin-top:4rem ;
+    }
+
+    figure.snip1283 .read-more:hover {
+        background-color: #7c9cba;
+        color: #000000;
+        border-radius:50px;
+    }
+
+    figure.snip1283:hover img,
+    figure.snip1283.hover img {
+        -webkit-transform: rotateX(-90deg);
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+
+    figure.snip1283:hover figcaption,
+    figure.snip1283.hover figcaption {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        opacity: 1;
+        -webkit-transition-delay: 0.2s;
+        transition-delay: 0.2s;
     }
 </style>
 
@@ -100,9 +198,10 @@
     <div class="main">
         <div class="search">
             <form style="text-align:center;" action="/inquire" method="POST">
-                <input style="width:300px; height:30px; border-radius: 5px; border: 2px solid green;" type="search" name="inquire" size="30"
-                    maxlength="35" >
-                <button style="height: 30px; border-radius: 10px;" type="submit" id="search">검색</button>
+                <input style="width:300px; height:30px; border-radius: 5px; border: 2px solid #576C81;" type="search"
+                    name="inquire" size="30" maxlength="35">
+                <button style="height: 30px; border-radius: 10px; border: 2px solid #576C81;" type="submit"
+                    id="search">검색</button>
             </form>
         </div>
         <div class="nav">
@@ -117,20 +216,16 @@
         <%for(var i=0;i<data.length; i++) { %>
         <% if(data[i].bidState=="입찰중"){%>
         <div class="toies">
-            <div><a href="/toy/detail/<%=data[i].toyId%>"><img src="/<%=data[i].toyPic%>" class="toyPic"
-                        alt="상품이미지" /></a></div>
-            <div><a style="text-decoration: none; color: black;" href="/toy/detail/<%=data[i].toyId%>">
-                    <h2><%=data[i].toyName%></h2>
-                </a></div>
-            <div>
-                <h2>현재코인 : <%=data[i].currentCoin%></h2>
-            </div>
-            <div>
-                <h2>마감일 : <%=data[i].endTime%> </h2>
-            </div>
-            <div>
-                <h2>현재<%=data[i].bidNum%>명의 친구가 입찰했어요! </h2>
-            </div>
+            <figure class="snip1283" style="text-align: center; margin:0 auto; border: 1px solid #7c9cba ; border-radius: 40px;" >
+                <img src="/<%=data[i].toyPic%>" alt="상품이미지" />
+                <figcaption>
+                    <h3><%=data[i].toyName%></h3>
+                    <p>현재코인 : <%=data[i].currentCoin%></p>
+                    <p>마감일 : <%=data[i].endTime%></p>
+                    <p>현재<%=data[i].bidNum%>명의 친구가 입찰했어요!</p>
+                    <a href="/toy/detail/<%=data[i].toyId%>" class="read-more">보러가기</a>
+                </figcaption>
+            </figure>
         </div>
         <% } %>
         <% } %>
