@@ -26,6 +26,7 @@ router.get('/bidChild/:toyId', function (req, res, next) {
     }
     var sql = "select bid.* from bid where toy_toyId = ? order by bidCoin DESC ";
     conn.query(sql, [toyId], (err, row) => {
+      conn.release();
       if (err) {
         throw err;
       }
@@ -128,6 +129,7 @@ function myTimer() {
         for (var i = 0; i < toyId.length; i++) {
           var sql_update = "update toy set bidState = '입찰완료', winner = (select user_id from bid where toy_toyID = ? ORDER BY bidCoin ASC LIMIT 1) where endTime < ? and toyId = ?";
           conn.query(sql_update, [toyId[i].toyId, t, toyId[i].toyId], (err, update) => {
+            conn.release();
             if (err) {
               throw err;
             }
