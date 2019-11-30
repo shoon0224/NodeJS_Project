@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
 </head>
 <style>
-    
+  .bidlist {
+    width: 100%;
+    float: left;
+    text-align: center;
+  }
 </style>
 
 <body>
-  <h1>입찰자명단</h1>
-  <table>
-    <thead>
+  <div class="bidlist">
+    <h1>입찰자명단</h1>
+    <table style=" border: 1px solid #9bd2ff; border-radius: 20px; margin: 0 auto; margin-top:50px; padding:50px;">
+      <thead>
         <tr>
-            <th>친구</th>
-            <th>금액</th>
-          </tr>
-    </thead>
-    <tbody>
-      <%for(var i=0;i<data.length; i++) { %>
-      <tr>
-        <td><%=data[i].user_id%></td>
-        <td><%=data[i].bidCoin%></td>
-      </tr>
-      <% } %>
-    </tbody>
-  </table>
+          <th>친구</th>
+          <th>코인</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%for(var i=0;i<data.length; i++) { %>
+        <tr>
+          <td><%=data[i].user_id%></td>
+          <td><%=data[i].bidCoin%><img src="/images/coin.png" alt="동전" style="width: 13px; height: 13px;"></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  </div>
 </body>
+
 </html>

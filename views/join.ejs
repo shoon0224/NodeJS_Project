@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   <title>회원가입</title>
+  <title>회원가입</title>
 </head>
 <style>
-  .join{
+  .join {
     float: left;
     width: 100%;
     text-align: center;
   }
+
   input::placeholder {
-  font-style: italic;
-  color: #3C50D2;
-}
+    font-style: italic;
+    color: #3C50D2;
+  }
 </style>
+
 <body>
-      <form class="join" action="/users/join" method="POST">
-      <h1 style="color: #47AA42; text-align: center; height: 50px; padding-top:80px;">회원가입</h1>
-      <br>   
-      <input type="text" id="id" placeholder="   아이디" name="id" style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2;">
-      <br>
-      <input type="password" id="pw" placeholder="   비밀번호" name="pw" style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2; margin-top:30px">
-      <br>
-      <input type="text" id="name" placeholder="   이름" name="name" style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2; margin-top:30px">
-      <br>
-      <input type="text" id="address" placeholder="   주소" name="address" style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2; margin-top:30px">
-      <br>
-      <input type="tel" id="tel" placeholder="   부모님 휴대폰 번호" name="tel" style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2; margin-top:30px">
-      <br>
-      <input type="text" id="parentsPw" placeholder="   부모님 비밀번호" name="parentsPw" style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2; margin-top:30px">
-      <br>
-      <input id="signup_button"  type="submit"  value="회원가입" style="width: 100px; height: 30px; background-color:#FFEE30; border-radius: 5px; color: #3C50D2; margin-top:30px">
-        </div>
-    </form>
+  <form class="join" action="/users/join" method="POST">
+    <h1 style="color: #47AA42; text-align: center; height: 50px; padding-top:80px;">회원가입</h1>
+    <br>
+    <input type="text" id="id" placeholder="   아이디" name="id"
+      style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2;">
+    <br>
+    <input type="password" id="pw" placeholder="   비밀번호" name="pw"
+      style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2; margin-top:30px">
+    <br>
+    <input type="text" id="name" placeholder="   이름" name="name"
+      style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2; margin-top:30px">
+    <br>
+    <input type="text" id="address" placeholder="   주소" name="address"
+      style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2; margin-top:30px">
+    <br>
+    <input type="tel" id="tel" placeholder="   부모님 휴대폰 번호" name="tel"
+      style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2; margin-top:30px">
+    <br>
+    <input type="text" id="parentsPw" placeholder="   부모님 비밀번호" name="parentsPw"
+      style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2; margin-top:30px">
+    <br>
+    <input id="signup_button" type="submit" value="회원가입"
+      style="width: 100px; height: 30px; background-color:#FFEE30; border-radius: 5px; color: #3C50D2; margin-top:30px">
+    </div>
+  </form>
 </body>
+
 </html>

@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   <title>코인충전</title>
+    <title>코인충전</title>
 </head>
 <script type="text/javascript">
-function parents(){
-    if(document.getElementById("show").style.display=="block"){
-        document.getElementById("show").style.display="none";
-    }else{
-        document.getElementById("show").style.display="block";
+    function parents() {
+        if (document.getElementById("show").style.display == "block") {
+            document.getElementById("show").style.display = "none";
+        } else {
+            document.getElementById("show").style.display = "block";
+        }
     }
-}
 </script>
 <style>
-    .coin{
+    .coin {
         width: 100%;
         float: left;
+        text-align: center;
+        
     }
 </style>
-<body>   
-      <form class="coin" action="/users/coin" method="POST">
-        <h1>우리아이코인충전</h1>
-        <hr/>
-        <label>현재코인 <%=sess.info.coin%></label><br>         
-        <label>충전할코인</label> 
-        <input type="text" id="coin" name="coin">
-        <input type="button" onclick="parents();" value="충전"/>
-        <div id="show" style="display: none;">
-            <input type="text" id="parentsPw" placeholder="부모님비밀번호입력" name="parentsPw">
-            <input type="submit"value="확인"/><br>
+
+<body>
+    <form class="coin" action="/users/coin" method="POST">
+        <img src="/images/mykids.png" alt="logo" style="width: 474.7px; height: 100px; margin-top: 30px; margin-bottom: 30px;">
+        <div>
+            <div style="width:200px; border: 2px solid #ff93de; border-radius: 20px;  margin: 0 auto; margin-bottom: 50px; padding: 50px;">
+                <label style="font-size: 2rem; font-weight: bold;" ><img src="/images/coin.png" alt="동전" style="width: 13px; height: 13px;">현재보유코인<img src="/images/coin.png" alt="동전" style="width: 13px; height: 13px;"> <p style="color: gold;"><%=sess.info.coin%></p> </label>
+            </div>
+            <div style="width:200px; border: 2px solid #9397ff; margin: 0 auto; border-radius: 20px; margin-bottom: 50px; padding: 50px;">
+                <label>충전할코인</label>
+                <input type="text" id="coin" name="coin" style="border: 1px solid gold; border-radius: 10px; ">
+                <input type="button" onclick="parents();" value="충전" style="color: tomato; width: 50px; height: 20px; background-color:#93ceff ; border-radius: 10px;"/>
+            </div>
+            <div id="show" style="display: none; width:200px; border: 2px solid #93fff2; margin: 0 auto; border-radius: 20px; padding: 50px; ">
+                <input type="text" id="parentsPw" placeholder="부모님비밀번호입력" name="parentsPw" style="border: 1px solid gold; border-radius: 10px; ">
+                <input type="submit" value="확인" style="color: tomato; width: 50px; height: 20px; background-color:#93ceff ; border-radius: 10px;"/><br>
+            </div>
         </div>
-      </form>
+    </form>
 </body>
+
 </html>

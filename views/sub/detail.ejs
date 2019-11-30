@@ -9,7 +9,6 @@
     .detail {
         float: left;
     }
-    
 </style>
 
 <body>
@@ -17,7 +16,9 @@
     <form class="detail" action="/bids/bid/<%= data[i].toyId %>" method="POST" style="width: 100%; height: 1000px;">
         <div style="margin: 10%;">
             <h1 style="width: 300px;"><%=data[i].toyName%></h1>
-            <hr />
+            <div>
+                <hr style="border: 3px solid black;" />
+            </div>
             <div style="width: 60%; float: left;">
                 <img style="margin-left:5rem ;" src="/<%=data[i].toyPic%>" width="500" height="500" alt="상품이미지" />
             </div>
@@ -36,7 +37,8 @@
                 </div>
             </div>
             <div style="float: left; width:91%; margin-top: 20px; text-align: right;">
-                <input style="width: 200px; height: 30px; border-radius: 10px; border: 2px solid #576C81;" type="text" id="bidCoin" name="bidCoin" placeholder="입찰할 코인 개수를 입력하세요">
+                <input style="width: 200px; height: 30px; border-radius: 10px; border: 2px solid #576C81;" type="text"
+                    id="bidCoin" name="bidCoin" placeholder="입찰할 코인 개수를 입력하세요">
                 <input type="submit" value="입찰하기"
                     style="margin-right: 10px; width: 200px; height: 35px; background-color:#7C9CBA; border-radius: 10px; border:1px solid black; font-size: 15px; color:white;">
             </div>

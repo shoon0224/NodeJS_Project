@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <head>
     <meta charset="UTF-8">
 
 </head>
+
+<script id="snowAnimate">
+    var flakeCnt;
+    var delta_x = new Array(), delta_y = new Array();
+    var move_x = new Array(), move_y = new Array();
+    var resolution_x, resolution_y;
+    $(function () {
+    resolution_x = document.documentElement.clientWidth, resolution_y = document.documentElement.clientHeight;
+        var position_x, position_y, i = 0;
+        flakeCnt = document.getElementById('petalCanvas').getElementsByTagName('span').length;
+        $("#petalCanvas span").each(function () {
+            position_x = Math.random() * resolution_x;
+            position_y = -30 - (Math.random() * 100);
+            $(this).css({ "left": position_x + "px", "top": position_y + "px" });
+            $(this).attr("id", "drop" + i); move_x[i] = position_x; move_y[i] = position_y; i++;
+        });
+        petalSet();
+    });
+    function petalSet() {
+        var hei, speed; if (resolution_y < 600) {
+            hei = 600;
+        }
+        else {
+            hei = resolution_y;
+        }
+        var max_angle = hei / 2; for (var i = 0; i < flakeCnt; i++) {
+            speed = Math.random();
+            delta_x[i] = (speed * max_angle) / 1200 + i / 100; delta_y[i] = (speed * 0.4) + 0.3;
+        } petalDrop();
+    }
+    function petalDrop() { for (var i = 0; i < flakeCnt; i++) { move_x[i] -= delta_x[i]; move_y[i] += delta_y[i]; if (move_x[i] < 0) move_x[i] = resolution_x - 30; if (move_y[i] > resolution_y - 10) move_y[i] = -20; $("#drop" + i).css({ "left": move_x[i] + "px", "top": move_y[i] + "px" }); } setTimeout("petalDrop()", 10); }  
+</script>
 <style>
     html {
         width: 100%;
@@ -25,6 +59,11 @@
         font-weight: bold;
     }
 
+
+    span { /*눈 색깔*/
+        color: #A6D5FE; 
+    }
+
     /* 위에 소스 돈 터치 */
 
 
@@ -33,7 +72,7 @@
         width: 100%;
         height: 100px;
         float: left;
-        background-color: #A6D5FE;
+        background-color: #9bd2ff;
     }
 
     .a1 {
@@ -61,17 +100,18 @@
         width: 33%;
         float: left;
         padding-top: 10px;
-        
+
     }
 
     .logout {
         float: left;
-        
+
     }
 
     .logoutB {
         background-color: #FFEE30;
-        color: #074384; ;
+        color: #074384;
+        ;
     }
 
 
@@ -106,6 +146,7 @@
 </style>
 
 <body>
+
     <div class="header">
         <div class="blank"> .</div>
         <div class="logo">
@@ -114,7 +155,7 @@
         <div class="list">
             <%if(sess.info) {%>
             <a style="color: #074384;" class="a1" href="#"><%=sess.info.name%>친구</a>
-            <a style="color: #074384;" class="a1" href="/users/coin">코인충전소</a>
+            <a style="color: #074384;" class="a1" href="/users/coin"> <img src="/images/coin.png" alt="동전" style="width: 13px; height: 13px;"> 충전소</a>
             <a style="color: #074384;" class="a1" href="/users/mypage">마이페이지</a>
             <form class="logout" action="/users/logout" method="post">
                 <button class="logoutB" type="submit">로그아웃</button>
@@ -124,6 +165,373 @@
             <a style="color: #074384;" class="a1" href="/users/join">회원가입</a>
             <% } %>
         </div>
+    </div>
+
+
+
+    <div id="petalCanvas" style="position:fixed;top:0;z-index:999;height:0;overflow:visible;">
+        
+        
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+
+        <!-- <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span>
+        <span style="position:absolute;">*</span> -->
+
     </div>
 </body>
 

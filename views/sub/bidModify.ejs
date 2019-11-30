@@ -1,34 +1,83 @@
 <!DOCTYPE html>
 <html>
+
 <head>
    <title>장난감수정</title>
 </head>
 <script>
-   document.getElementById('endTime').value = data[0].endTime.toISOString().slice(0,-1);
+   document.getElementById('endTime').value = data[0].endTime.toISOString().slice(0, -1);
 </script>
 <style>
-   .modify{
+   .modify {
+      width: 100%;
       float: left;
+      text-align: center;
+   }
+   
+   .filebox label {
+      display: inline-block;
+      padding: .5em .75em;
+      color: #fff;
+      font-size: inherit;
+      line-height: normal;
+      vertical-align: middle;
+      background-color: #ff96c3;
+      cursor: pointer;
+      border: 1px solid #ff96c3;
+      border-radius: .25em;
+      -webkit-transition: background-color 0.2s;
+      transition: background-color 0.2s;
+   }
+
+   .filebox label:hover {
+      background-color: #e77fff;
+   }
+
+   .filebox label:active {
+      background-color: #da20f7;
+   }
+
+   .filebox input[type="file"] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+   }
+
+   input::placeholder {
+      font-style: italic;
+      color: #ff96c3;
    }
 </style>
+
 <body>
-      <%for(var i=0;i<data.length; i++) { %>
-      <form class="modify" action="/toy/modify/<%=data[i].toyId%>" method="POST" enctype="multipart/form-data">
+   <%for(var i=0;i<data.length; i++) { %>
+   <form class="modify" action="/toy/modify/<%=data[i].toyId%>" method="POST" enctype="multipart/form-data">
       <h1>경매수정</h1>
-      <hr/>
+
+      <div class="filebox" style="margin-bottom: 30px;">
+         <label for="file">사진 업로드</label>
+         <input type='file' name="photo" id="file" />
+      </div>
+      <p style="color: #ff9393;">장난감이름</p><input type="text" id="toyName" name="toyName" value="<%=data[i].toyName%>"
+         style="width:300px; height:30px; border-radius: 5px; border: 2px solid #ff9393; margin-bottom: 20px;">
       <br>
-      <input type='file' name="photo" value="<%=data[i].toyPic%>" />
+      <p style="color: #ff93de;">장난감가격</p><input type="text" id="toyRprice" name="toyRprice" value="<%=data[i].toyRprice%>"
+         style="width:300px; height:30px; border-radius: 5px; border: 2px solid #ff93de; margin-bottom: 20px;">
       <br>
-      <input type="text" id="toyName" name="toyName" value="<%=data[i].toyName%>">
+      <p style="color: #ac64d6;">판매사유</p><input type="text" id="saleReason" name="saleReason" value="<%=data[i].saleReason%>"
+         style="width:300px; height:30px; border-radius: 5px; border: 2px solid #d993ff; margin-bottom: 20px;">
       <br>
-      <input type="text" id="toyRprice" name="toyRprice" value="<%=data[i].toyRprice%>">
+      <p style="color: #73cec2;">장난감설명</p><input type="text" id="toyExp" name="toyExp" value="<%=data[i].toyExp%>"
+         style="width:300px; height:30px; border-radius: 5px; border: 2px solid #93fff2; margin-bottom: 20px;">
       <br>
-      <input type="text" id="saleReason" name="saleReason" value="<%=data[i].saleReason%>">
-      <br>
-      <input type="text" id="toyExp" name="toyExp" value="<%=data[i].toyExp%>">
-      <br>
-      <input type="submit"  value="수정하기">
-    </form>
-    <% } %>
+      <input type="submit" value="수정하기" style="border: 1px solid #ff9393; border-radius: 20px; color: #9397ff; margin-top: 30px; width: 70px; height: 20px;">
+   </form>
+   <% } %>
 </body>
+
 </html>

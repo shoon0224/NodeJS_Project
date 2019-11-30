@@ -9,73 +9,87 @@
         width: 100%;
         float: left;
     }
-
-    .mimg {
+    .layout1{
+        width: 100%;
+        float: left;
+        margin-bottom:50px ;
+        text-align: center;
+    }
+    .inlayout1{
+        float: left;
+        text-align: center;
+        margin-left: 50px;
+        border: 1px solid #9bd2ff;
+        border-radius: 30px;
+        margin-bottom:50px ;
+    }
+    .mytoyimg{
         width: 300px;
-        height: 305px;
+        height: 300px;
+
     }
 </style>
 
 <body>
-
     <div class="main">
-        <h1>내가 등록한 장난감</h1>
-        <%for(var i=0;i<data.length; i++) { %>
-        <div style="float: left; width: 300px; margin: 6%;">
-            <div><a href="/toy/detail/<%=data[i].toyId%>"><img src="/<%=data[i].toyPic%>" width="400" height="430"
-                        class="toyPic" alt="상품이미지" /></a></div>
-            <div><a style="text-decoration: none; color: black;" href="/detail/<%=data[i].toyId%>">
-                    <h2><%=data[i].toyName%></h2>
-                </a></div>
-            <div>
-                <h2>현재입찰코인 : <%=data[i].currentCoin%></h2>
-            </div>
+        <div class="layout1">
+            <h1 style="color: cornflowerblue;">내가 등록한 장난감</h1>
+            <%for(var i=0;i<data.length; i++) { %>
+            <div class="inlayout1" >
+                <div><a href="/toy/detail/<%=data[i].toyId%>"><img class="mytoyimg" src="/<%=data[i].toyPic%>" class="toyPic" alt="상품이미지" /></a></div>
+                <div><a style="text-decoration: none; color: black;" href="/detail/<%=data[i].toyId%>">
+                        <h2><%=data[i].toyName%></h2>
+                    </a></div>
+                <div>
+                    <h2>현재입찰코인 : <%=data[i].currentCoin%></h2>
+                </div>
 
-            <div>
-                <h2>현재 입찰한 친구 수 <%=data[i].bidNum%>명</h2>
+                <div>
+                    <h2>현재 입찰한 친구 수 <%=data[i].bidNum%>명</h2>
+                </div>
+                <div>
+                    <h2>입찰상태 <%=data[i].bidState%></h2>
+                </div>
+                <div>
+                    <a href="/toy/delete/<%=data[i].toyId%>" style="color: #ff9393;">삭제</a>
+                    <a href="/toy/modify/<%=data[i].toyId%>" style="color: #9397ff;">수정</a>
+                </div>
             </div>
-            <div>
-                <h2>입찰상태 <%=data[i].bidState%></h2>
-            </div>
-            <div>
-                <a href="/toy/delete/<%=data[i].toyId%>" style="color: crimson;">삭제</a>
-                <a href="/toy/modify/<%=data[i].toyId%>" style="color: darkslateblue;">수정</a>
-            </div>
+            <% } %>
         </div>
-        <% } %>
-        <h1>입찰 및 낙찰한 장난감</h1>
-        <%for(var i=0;i<data2.length; i++) { %>
-        <div style="float: left; width: 300px; margin: 6%;">
-            <div><a href="/toy/detail/<%=data2[i].toyId%>"><img src="/<%=data2[i].toyPic%>" width="400" height="430"
-                        class="toyPic" alt="상품이미지" /></a></div>
-            <div><a style="text-decoration: none; color: black;" href="/toy/detail/<%=data2[i].toyId%>">
-                    <h2><%=data2[i].toyName%></h2>
-                </a></div>
-            <div>
-                <h2>현재입찰코인 : <%=data2[i].currentCoin%></h2>
-            </div>
-            <div>
-                <h2>입찰한코인 : <%=data2[i].bidCoin%></h2>
-            </div>
+        <div class="layout1">
+            <h1 style="color:darkturquoise;">입찰 및 낙찰한 장난감</h1>
+            <%for(var i=0;i<data2.length; i++) { %>
+            <div class="inlayout1">
+                <div><a href="/toy/detail/<%=data2[i].toyId%>"><img class="mytoyimg" src="/<%=data2[i].toyPic%>" class="toyPic" alt="상품이미지" /></a></div>
+                <div><a style="text-decoration: none; color: black;" href="/toy/detail/<%=data2[i].toyId%>">
+                        <h2><%=data2[i].toyName%></h2>
+                    </a></div>
+                <div>
+                    <h2>현재입찰코인 : <%=data2[i].currentCoin%></h2>
+                </div>
+                <div>
+                    <h2>입찰한코인 : <%=data2[i].bidCoin%></h2>
+                </div>
 
-            <div>
-                <h2>입찰상태 <%=data2[i].bidState%></h2>
-            </div>
-            <%if(data2[i].bidState=='입찰완료' && data2[i].winner==sess.info.id){%>
-            <form action="/sub/tel/<%=data[i].toyId%>" method="POST" enctype="multipart/form-data">
-            <div>
-               
-                <p>낙찰성공  <input type="submit" value="연락처"></p>
-            </div>
-            </form>
-            <%}%>
+                <div>
+                    <h2>입찰상태 <%=data2[i].bidState%></h2>
+                </div>
+                <%if(data2[i].bidState=='입찰완료' && data2[i].winner==sess.info.id){%>
+                <form action="/sub/tel/<%=data[i].toyId%>" method="POST" enctype="multipart/form-data">
+                    <div>
+                        <p style="color: red; font-weight: bold;">낙찰<input type="submit" value="경매자연락처보기" style="margin-left:10px;padding: 5px; background-color: #FFEE30; border-radius:30px ;"></p>
+                    </div>
+                </form>
+                <%}%>
             <%if(data2[i].bidState=='입찰완료' && data2[i].winner!==sess.info.id){%>
                 <div>
-                        <h2>낙찰실패</h2>
-                    </div>
+                    <h2>낙찰실패</h2>
+                </div>
                 <%}%>
-        </div>
-        <% } %>
+            </div>
+            <% } %>
+            </div>
         </div>
 
 </body>

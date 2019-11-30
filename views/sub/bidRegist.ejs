@@ -1,33 +1,83 @@
 <!DOCTYPE html>
 <html>
+
 <head>
    <title>장난감등록</title>
 </head>
 <style>
-   .regist{
+   .regist {
+      width: 100%;
       float: left;
+      text-align: center;
+   }
+
+   .filebox label {
+      display: inline-block;
+      padding: .5em .75em;
+      color: #fff;
+      font-size: inherit;
+      line-height: normal;
+      vertical-align: middle;
+      background-color: #ff96c3;
+      cursor: pointer;
+      border: 1px solid #ff96c3;
+      border-radius: .25em;
+      -webkit-transition: background-color 0.2s;
+      transition: background-color 0.2s;
+   }
+
+   .filebox label:hover {
+      background-color: #e77fff;
+   }
+
+   .filebox label:active {
+      background-color: #da20f7;
+   }
+
+   .filebox input[type="file"] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+   }
+
+   input::placeholder {
+      font-style: italic;
+      color: #ff96c3;
    }
 </style>
+
 <body>
-      <form class="regist" action="/toy/bidRegist" method="POST" enctype="multipart/form-data">
+   <form class="regist" action="/toy/bidRegist" method="POST" enctype="multipart/form-data">
       <h1>경매등록</h1>
-      <hr/>
+      <div class="filebox" style="margin-bottom: 30px;">
+         <label for="file">사진 업로드</label>
+         <input type='file' name="photo" id="file" />
+      </div>
+      <input type="text" id="toyName" name="toyName" placeholder="장난감 이름을 입력하세요"
+         style="width:300px; height:30px; border-radius: 5px; border: 2px solid #ff9393; margin-bottom: 20px;">
       <br>
-      <input type='file' name="photo"/>
+      <input type="text" id="toyRprice" name="toyRprice" placeholder="장난감 가격을 입력하세요"
+         style="width:300px; height:30px; border-radius: 5px; border: 2px solid #ff93de; margin-bottom: 20px;">
       <br>
-      <input type="text" id="toyName" name="toyName" placeholder="장난감 이름을 입력하세요">
+      <input type="text" id="saleReason" name="saleReason" placeholder="판매 사유를 입력하세요"
+         style="width:300px; height:30px; border-radius: 5px; border: 2px solid #d993ff; margin-bottom: 20px;">
       <br>
-      <input type="text" id="toyRprice" name="toyRprice" placeholder="장난감 가격을 입력하세요">
+      <input type="text" id="toyExp" name="toyExp" placeholder="장난감 설명을 입력하세요"
+         style="width:300px; height:30px; border-radius: 5px; border: 2px solid #9397ff; margin-bottom: 20px;">
       <br>
-      <input type="text" id="saleReason" name="saleReason" placeholder="판매 사유를 입력하세요">
+      <input type="text" id="startCoin" name="startCoin" placeholder="경매를 시작할 코인을 정해주세요"
+         style="width:300px; height:30px; border-radius: 5px; border: 2px solid #93ceff; margin-bottom: 20px;">
       <br>
-      <input type="text" id="toyExp" name="toyExp" placeholder="장난감 설명을 입력하세요">
+      <input type="datetime-local" id="endTime" name="endTime"
+         style="width:300px; height:30px; border-radius: 5px; border: 2px solid #93fff2;">
       <br>
-      <input type="text" id="startCoin" name="startCoin" placeholder="경매를 시작할 코인을 정해주세요">
-      <br>
-      <input type="datetime-local" id="endTime" name="endTime">
-      <br>
-      <input type="submit"  value="등록하기">
-    </form>
+      <input type="submit" value="등록하기" style="border: 1px solid #ff9393; border-radius: 20px; color: #9397ff; margin-top: 30px; width: 70px; height: 20px;" >
+   </form>
 </body>
+
 </html>
