@@ -36,12 +36,14 @@
                     <a style="font-size: 1.5rem; color: teal;" href="/bids/bidChild/<%=data[i].toyId%>">입찰자명단보기</a>
                 </div>
             </div>
+            <%if(data[i].bidState=='입찰중'){%>
             <div style="float: left; width:91%; margin-top: 20px; text-align: right;">
                 <input style="width: 200px; height: 30px; border-radius: 10px; border: 2px solid #576C81;" type="text"
                     id="bidCoin" name="bidCoin" placeholder="입찰할 코인 개수를 입력하세요">
                 <input type="submit" value="입찰하기"
                     style="margin-right: 10px; width: 200px; height: 35px; background-color:#7C9CBA; border-radius: 10px; border:1px solid black; font-size: 15px; color:white;">
             </div>
+            <%}%>
         </div>
     </form>
     <%} %>

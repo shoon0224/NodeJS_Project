@@ -72,7 +72,7 @@
         width: 100%;
         height: 100px;
         float: left;
-        background-color: #9bd2ff;
+        background-color: #0f4c81;
     }
 
     .a1 {
@@ -85,7 +85,7 @@
     .blank {
         width: 33%;
         float: left;
-        color: #FFEE30;
+        color: #0f4c81;
     }
 
     .logo {
@@ -100,7 +100,6 @@
         width: 33%;
         float: left;
         padding-top: 10px;
-
     }
 
     .logout {
@@ -154,15 +153,15 @@
         </div>
         <div class="list">
             <%if(sess.info) {%>
-            <a style="color: #074384;" class="a1" href="#"><%=sess.info.name%>친구</a>
-            <a style="color: #074384;" class="a1" href="/users/coin"> <img src="/images/coin.png" alt="동전" style="width: 13px; height: 13px;"> 충전소</a>
-            <a style="color: #074384;" class="a1" href="/users/mypage">마이페이지</a>
+            <a style="color: #BDD3E2;" class="a1" href="#"><%=sess.info.name%>친구</a>
+            <a style="color: #BDD3E2;" class="a1" href="/users/coin"> <img src="/images/coin.png" alt="동전" style="width: 13px; height: 13px;"> 충전소</a>
+            <a style="color: #BDD3E2;" class="a1" href="/users/mypage">마이페이지</a>
             <form class="logout" action="/users/logout" method="post">
                 <button class="logoutB" type="submit">로그아웃</button>
             </form>
             <% } else { %>
-            <a style="color: #074384;" class="a1" href="/users/login">로그인</a>
-            <a style="color: #074384;" class="a1" href="/users/join">회원가입</a>
+            <a style="color: #BDD3E2;" class="a1" href="/users/login">로그인</a>
+            <a style="color: #BDD3E2;" class="a1" href="/users/join">회원가입</a>
             <% } %>
         </div>
     </div>
@@ -172,7 +171,7 @@
     <div id="petalCanvas" style="position:fixed;top:0;z-index:999;height:0;overflow:visible;">
         
         
-        <span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
+        <!--<span style="position:absolute;"><img src="/images/1.png" alt="" style="width: 10px; height: 10px;"></span>
         <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
         <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
         <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
@@ -296,7 +295,7 @@
         <span style="position:absolute;"><img src="/images/2.png" alt="" style="width: 10px; height: 10px;"></span>
         <span style="position:absolute;"><img src="/images/3.png" alt="" style="width: 10px; height: 10px;"></span>
         <span style="position:absolute;"><img src="/images/4.png" alt="" style="width: 10px; height: 10px;"></span>
-        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>
+        <span style="position:absolute;"><img src="/images/5.png" alt="" style="width: 10px; height: 10px;"></span>-->
 
         <!-- <span style="position:absolute;">*</span>
         <span style="position:absolute;">*</span>
