@@ -76,7 +76,7 @@
                     <h2>입찰상태 <%=data2[i].bidState%></h2>
                 </div>
                 <%if(data2[i].bidState=='입찰완료' && data2[i].winner==sess.info.id){%>
-                <form action="/sub/tel/<%=data[i].toyId%>" method="POST" enctype="multipart/form-data">
+                <form action="/sub/tel/<%=data2[i].toyId%>" method="POST" enctype="multipart/form-data">
                     <div>
                         <p style="color: red; font-weight: bold;">낙찰<input type="submit" value="경매자연락처보기" style="margin-left:10px;padding: 5px; background-color: #FFEE30; border-radius:30px ;"></p>
                     </div>
